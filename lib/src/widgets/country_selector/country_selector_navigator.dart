@@ -20,6 +20,12 @@ abstract class CountrySelectorNavigator {
   final double flagSize;
   final bool useRootNavigator;
 
+  /// Set flag to square instead of circle
+  final bool isFlagSquare;
+
+  /// Set borderRadius when flag is square
+  final double flagSquareBorderRadius;
+
   const CountrySelectorNavigator({
     this.countries,
     this.favorites,
@@ -35,6 +41,8 @@ abstract class CountrySelectorNavigator {
     this.searchBoxIconColor,
     this.scrollPhysics,
     this.flagSize = 40,
+    this.flagSquareBorderRadius = 5,
+    this.isFlagSquare = false,
     this.useRootNavigator = true,
   });
 

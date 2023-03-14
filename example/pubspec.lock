@@ -36,10 +36,11 @@ packages:
   circle_flags:
     dependency: transitive
     description:
-      name: circle_flags
-      sha256: "87102c61b777dcae56d29c6f1d2b2126d98dd09dd904618ccc04a0943ac95924"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: main
+      resolved-ref: "36a06f3b0bcfc6088f3e5dfae3d8dd85b4fd0c62"
+      url: "https://github.com/DumbDev168/flutter_circle_flags.git"
+    source: git
     version: "1.0.4"
   clock:
     dependency: transitive

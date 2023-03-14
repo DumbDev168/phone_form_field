@@ -13,6 +13,12 @@ class CountryCodeChip extends StatelessWidget {
   final double flagSize;
   final TextDirection? textDirection;
 
+  /// Set flag to square instead of circle
+  final bool isFlagSquare;
+
+  /// Set borderRadius when flag is square
+  final double flagSquareBorderRadius;
+
   CountryCodeChip({
     Key? key,
     required IsoCode isoCode,
@@ -21,6 +27,8 @@ class CountryCodeChip extends StatelessWidget {
     this.showDialCode = true,
     this.padding = const EdgeInsets.all(20),
     this.flagSize = 20,
+    this.flagSquareBorderRadius = 5,
+    this.isFlagSquare = false,
     this.textDirection,
   })  : country = Country(isoCode, ''),
         super(key: key);
@@ -34,6 +42,8 @@ class CountryCodeChip extends StatelessWidget {
           CircleFlag(
             country.isoCode.name,
             size: flagSize,
+            borderRadius: flagSquareBorderRadius,
+            isSquare: isFlagSquare,
           ),
           const SizedBox(width: 8),
         ],

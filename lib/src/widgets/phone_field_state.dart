@@ -130,6 +130,8 @@ class PhoneFieldState extends State<PhoneField> {
                       color: Theme.of(context).textTheme.bodySmall?.color,
                     ),
                 flagSize: widget.flagSize,
+                flagSquareBorderRadius: widget.flagSquareBorderRadius,
+                isFlagSquare: widget.isFlagSquare,
               ),
             ),
           ),

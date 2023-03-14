@@ -47,6 +47,12 @@ class CountrySelectorSearchDelegate extends SearchDelegate<Country> {
   final bool searchAutofocus;
   final double flagSize;
 
+  /// Set flag to square instead of circle
+  final bool isFlagSquare;
+
+  /// Set borderRadius when flag is square
+  final double flagSquareBorderRadius;
+
   LocalizedCountryRegistry? _localizedCountryRegistry;
 
   /// Override default title TextStyle
@@ -69,6 +75,8 @@ class CountrySelectorSearchDelegate extends SearchDelegate<Country> {
     this.flagSize = 40,
     this.titleStyle,
     this.subtitleStyle,
+    this.flagSquareBorderRadius = 5,
+    this.isFlagSquare = false,
   })  : countriesIso = countries ?? IsoCode.values,
         favoriteCountriesIso = favoriteCountries;
 
@@ -123,6 +131,8 @@ class CountrySelectorSearchDelegate extends SearchDelegate<Country> {
       showDialCode: showCountryCode,
       onTap: onCountrySelected,
       flagSize: flagSize,
+      flagSquareBorderRadius: flagSquareBorderRadius,
+      isFlagSquare: isFlagSquare,
       scrollController: scrollController,
       scrollPhysics: scrollPhysics,
       noResultMessage: noResultMessage,

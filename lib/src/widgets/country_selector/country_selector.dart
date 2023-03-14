@@ -60,6 +60,12 @@ class CountrySelector extends StatefulWidget {
   final Color? searchBoxIconColor;
   final double flagSize;
 
+  /// Set flag to square instead of circle
+  final bool isFlagSquare;
+
+  /// Set borderRadius when flag is square
+  final double flagSquareBorderRadius;
+
   const CountrySelector({
     Key? key,
     required this.onCountrySelected,
@@ -77,6 +83,8 @@ class CountrySelector extends StatefulWidget {
     this.searchBoxTextStyle,
     this.searchBoxIconColor,
     this.flagSize = 40,
+    this.flagSquareBorderRadius = 5,
+    this.isFlagSquare = false,
   }) : super(key: key);
 
   @override
@@ -155,6 +163,8 @@ class CountrySelectorState extends State<CountrySelector> {
             noResultMessage: widget.noResultMessage,
             titleStyle: widget.titleStyle,
             subtitleStyle: widget.subtitleStyle,
+            flagSquareBorderRadius: widget.flagSquareBorderRadius,
+            isFlagSquare: widget.isFlagSquare,
           ),
         ),
       ],

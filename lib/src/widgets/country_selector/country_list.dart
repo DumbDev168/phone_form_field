@@ -12,6 +12,12 @@ class CountryList extends StatelessWidget {
   final List<Country> countries;
   final double flagSize;
 
+  /// Set flag to square instead of circle
+  final bool isFlagSquare;
+
+  /// Set borderRadius when flag is square
+  final double flagSquareBorderRadius;
+
   /// list of favorite countries to display at the top
   final List<Country> favorites;
 
@@ -43,6 +49,8 @@ class CountryList extends StatelessWidget {
     this.flagSize = 40,
     this.subtitleStyle,
     this.titleStyle,
+    this.flagSquareBorderRadius = 5,
+    this.isFlagSquare = false,
   }) : super(key: key) {
     _allListElement = [
       ...favorites,
@@ -78,6 +86,8 @@ class CountryList extends StatelessWidget {
           leading: CircleFlag(
             country.isoCode.name,
             size: flagSize,
+            isSquare: isFlagSquare,
+            borderRadius: flagSquareBorderRadius,
           ),
           title: Align(
             alignment: AlignmentDirectional.centerStart,

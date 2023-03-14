@@ -98,6 +98,12 @@ class PhoneFormField extends FormField<PhoneNumber> {
   /// show Dial Code or not
   final bool showDialCode;
 
+  /// Set flag to square instead of circle
+  final bool isFlagSquare;
+
+  /// Set borderRadius when flag is square
+  final double flagSquareBorderRadius;
+
   PhoneFormField({
     Key? key,
     this.controller,
@@ -156,6 +162,8 @@ class PhoneFormField extends FormField<PhoneNumber> {
     String? restorationId,
     bool enableIMEPersonalizedLearning = true,
     this.showDialCode = true,
+    this.flagSquareBorderRadius = 5,
+    this.isFlagSquare = false,
   })  : assert(
           initialValue == null || controller == null,
           'One of initialValue or controller can be specified at a time',
@@ -172,6 +180,8 @@ class PhoneFormField extends FormField<PhoneNumber> {
           builder: (state) {
             final field = state as PhoneFormFieldState;
             return PhoneField(
+              flagSquareBorderRadius: flagSquareBorderRadius,
+              isFlagSquare: isFlagSquare,
               controller: field._childController,
               showFlagInInput: showFlagInInput,
               selectorNavigator: countrySelectorNavigator,

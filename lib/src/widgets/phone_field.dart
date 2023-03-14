@@ -18,6 +18,13 @@ class PhoneField extends StatefulWidget {
   final bool showDialCode;
   final String? errorText;
   final double flagSize;
+
+  /// Set flag to square instead of circle
+  final bool isFlagSquare;
+
+  /// Set borderRadius when flag is square
+  final double flagSquareBorderRadius;
+
   final InputDecoration decoration;
   final bool isCountrySelectionEnabled;
   final bool isCountryChipPersistent;
@@ -68,6 +75,8 @@ class PhoneField extends StatefulWidget {
   const PhoneField({
     // form field params
     Key? key,
+    this.flagSquareBorderRadius = 5,
+    this.isFlagSquare = false,
     required this.controller,
     required this.showFlagInInput,
     required this.selectorNavigator,
