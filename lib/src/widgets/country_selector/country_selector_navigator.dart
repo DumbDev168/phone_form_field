@@ -21,10 +21,10 @@ abstract class CountrySelectorNavigator {
   final bool useRootNavigator;
 
   /// Set flag to square instead of circle
-  final bool isFlagSquare;
+  final bool? isFlagSquare;
 
   /// Set borderRadius when flag is square
-  final double flagSquareBorderRadius;
+  final double? flagSquareBorderRadius;
 
   const CountrySelectorNavigator({
     this.countries,
@@ -41,7 +41,7 @@ abstract class CountrySelectorNavigator {
     this.searchBoxIconColor,
     this.scrollPhysics,
     this.flagSize = 40,
-    this.flagSquareBorderRadius = 5,
+    this.flagSquareBorderRadius = 8,
     this.isFlagSquare = false,
     this.useRootNavigator = true,
   });
@@ -68,6 +68,8 @@ abstract class CountrySelectorNavigator {
       searchBoxIconColor: searchBoxIconColor,
       scrollPhysics: scrollPhysics,
       flagSize: flagSize,
+      isFlagSquare: isFlagSquare ?? false,
+      flagSquareBorderRadius: flagSquareBorderRadius ?? 8,
     );
   }
 
@@ -103,6 +105,8 @@ abstract class CountrySelectorNavigator {
     TextStyle? searchBoxTextStyle,
     Color? searchBoxIconColor,
     ScrollPhysics? scrollPhysics,
+    bool isFlagSquare,
+    double flagSquareBorderRadius,
   }) = SearchDelegateNavigator._;
 
   const factory CountrySelectorNavigator.bottomSheet({
@@ -157,6 +161,8 @@ abstract class CountrySelectorNavigator {
     TextStyle? searchBoxTextStyle,
     Color? searchBoxIconColor,
     ScrollPhysics? scrollPhysics,
+    bool isFlagSquare,
+    double flagSquareBorderRadius,
   }) = DraggableModalBottomSheetNavigator._;
 }
 
@@ -229,6 +235,8 @@ class SearchDelegateNavigator extends CountrySelectorNavigator {
     TextStyle? searchBoxTextStyle,
     Color? searchBoxIconColor,
     ScrollPhysics? scrollPhysics,
+    bool isFlagSquare = true,
+    double flagSquareBorderRadius = 8,
   }) : super(
           countries: countries,
           favorites: favorites,
@@ -243,6 +251,8 @@ class SearchDelegateNavigator extends CountrySelectorNavigator {
           searchBoxTextStyle: searchBoxTextStyle,
           searchBoxIconColor: searchBoxIconColor,
           scrollPhysics: scrollPhysics,
+          isFlagSquare: isFlagSquare,
+          flagSquareBorderRadius: flagSquareBorderRadius,
         );
 
   CountrySelectorSearchDelegate _getCountrySelectorSearchDelegate({
@@ -260,6 +270,9 @@ class SearchDelegateNavigator extends CountrySelectorNavigator {
       showCountryCode: showCountryCode,
       titleStyle: titleStyle,
       subtitleStyle: subtitleStyle,
+      flagSize: flagSize,
+      isFlagSquare: isFlagSquare,
+      flagSquareBorderRadius: flagSquareBorderRadius,
     );
   }
 
@@ -401,6 +414,8 @@ class DraggableModalBottomSheetNavigator extends CountrySelectorNavigator {
     Color? searchBoxIconColor,
     ScrollPhysics? scrollPhysics,
     bool useRootNavigator = true,
+    bool isFlagSquare = true,
+    double flagSquareBorderRadius = 8,
   }) : super(
           countries: countries,
           favorites: favorites,
@@ -416,6 +431,8 @@ class DraggableModalBottomSheetNavigator extends CountrySelectorNavigator {
           searchBoxIconColor: searchBoxIconColor,
           scrollPhysics: scrollPhysics,
           flagSize: flagSize,
+          isFlagSquare: isFlagSquare,
+          flagSquareBorderRadius: flagSquareBorderRadius,
         );
 
   @override

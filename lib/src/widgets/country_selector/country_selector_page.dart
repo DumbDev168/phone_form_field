@@ -48,10 +48,10 @@ class CountrySelectorSearchDelegate extends SearchDelegate<Country> {
   final double flagSize;
 
   /// Set flag to square instead of circle
-  final bool isFlagSquare;
+  final bool? isFlagSquare;
 
   /// Set borderRadius when flag is square
-  final double flagSquareBorderRadius;
+  final double? flagSquareBorderRadius;
 
   LocalizedCountryRegistry? _localizedCountryRegistry;
 
@@ -131,8 +131,8 @@ class CountrySelectorSearchDelegate extends SearchDelegate<Country> {
       showDialCode: showCountryCode,
       onTap: onCountrySelected,
       flagSize: flagSize,
-      flagSquareBorderRadius: flagSquareBorderRadius,
-      isFlagSquare: isFlagSquare,
+      flagSquareBorderRadius: flagSquareBorderRadius ?? 8,
+      isFlagSquare: isFlagSquare ?? false,
       scrollController: scrollController,
       scrollPhysics: scrollPhysics,
       noResultMessage: noResultMessage,
