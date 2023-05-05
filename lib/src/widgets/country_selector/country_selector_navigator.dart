@@ -472,25 +472,28 @@ class DraggableModalBottomSheetNavigator extends CountrySelectorNavigator {
       shape: RoundedRectangleBorder(
         borderRadius: effectiveBorderRadius,
       ),
-      builder: (_) => DraggableScrollableSheet(
-        initialChildSize: initialChildSize,
-        minChildSize: minChildSize,
-        maxChildSize: maxChildSize,
-        expand: false,
-        builder: (context, scrollController) {
-          return Container(
-            decoration: ShapeDecoration(
-              color: Theme.of(context).canvasColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: effectiveBorderRadius,
+      builder: (_) => Padding(
+        padding: MediaQuery.of(_).viewInsets,
+        child: DraggableScrollableSheet(
+          initialChildSize: initialChildSize,
+          minChildSize: minChildSize,
+          maxChildSize: maxChildSize,
+          expand: false,
+          builder: (context, scrollController) {
+            return Container(
+              decoration: ShapeDecoration(
+                color: Theme.of(context).canvasColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: effectiveBorderRadius,
+                ),
               ),
-            ),
-            child: _getCountrySelector(
-              onCountrySelected: (country) => Navigator.pop(context, country),
-              scrollController: scrollController,
-            ),
-          );
-        },
+              child: _getCountrySelector(
+                onCountrySelected: (country) => Navigator.pop(context, country),
+                scrollController: scrollController,
+              ),
+            );
+          },
+        ),
       ),
       useRootNavigator: useRootNavigator,
       isScrollControlled: true,

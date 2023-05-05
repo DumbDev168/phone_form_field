@@ -167,6 +167,7 @@ class PhoneFormFieldScreenState extends State<PhoneFormFieldScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //resizeToAvoidBottomInset: true,
       // drawer: AppDrawer(),
       appBar: AppBar(
         title: const Text('Phone_form_field'),
@@ -228,17 +229,21 @@ class PhoneFormFieldScreenState extends State<PhoneFormFieldScreen> {
                             },
                             items: const [
                               DropdownMenuItem(
-                                value: CountrySelectorNavigator.bottomSheet(),
-                                child: Text('Bottom sheet'),
-                              ),
-                              DropdownMenuItem(
                                 value: CountrySelectorNavigator
                                     .draggableBottomSheet(
-                                        showDraggableIndicator: false,
-                                        showSearchInput: false,
-                                        draggbleIndicatorColor: Colors.grey,
-                                        draggableRadius: 10),
+                                  initialChildSize: 0.35,
+                                  maxChildSize: 0.5,
+                                  minChildSize: 0.3,
+                                  showDraggableIndicator: false,
+                                  // showSearchInput: false,
+                                  draggbleIndicatorColor: Colors.grey,
+                                  draggableRadius: 10,
+                                ),
                                 child: Text('Draggable modal sheet'),
+                              ),
+                              DropdownMenuItem(
+                                value: CountrySelectorNavigator.bottomSheet(),
+                                child: Text('Bottom sheet'),
                               ),
                               DropdownMenuItem(
                                 value:
