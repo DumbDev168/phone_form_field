@@ -50,6 +50,24 @@ class PhoneFieldView extends StatelessWidget {
       child: Directionality(
         textDirection: useRtl ? TextDirection.rtl : TextDirection.ltr,
         child: PhoneFormField(
+          contextMenuBuilder: (context, editableTextState) {
+            final TextEditingValue value = editableTextState.textEditingValue;
+            final List<ContextMenuButtonItem> buttonItems =
+                editableTextState.contextMenuButtonItems;
+            buttonItems.insert(
+                0,
+                ContextMenuButtonItem(
+                  label: 'Send email',
+                  onPressed: () {
+                    ContextMenuController.removeAny();
+                    //Navigator.of(context).push(_showDialog(context));
+                  },
+                ));
+            return AdaptiveTextSelectionToolbar.buttonItems(
+              anchors: editableTextState.contextMenuAnchors,
+              buttonItems: buttonItems,
+            );
+          },
           key: inputKey,
           controller: controller,
           shouldFormat: shouldFormat && !useRtl,
@@ -215,7 +233,11 @@ class PhoneFormFieldScreenState extends State<PhoneFormFieldScreen> {
                               ),
                               DropdownMenuItem(
                                 value: CountrySelectorNavigator
-                                    .draggableBottomSheet(),
+                                    .draggableBottomSheet(
+                                        showDraggableIndicator: false,
+                                        showSearchInput: false,
+                                        draggbleIndicatorColor: Colors.grey,
+                                        draggableRadius: 10),
                                 child: Text('Draggable modal sheet'),
                               ),
                               DropdownMenuItem(

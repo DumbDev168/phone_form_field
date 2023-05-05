@@ -1,5 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'package:phone_form_field/l10n/generated/phone_field_localization.dart';
 import 'package:phone_form_field/l10n/generated/phone_field_localization_en.dart';
 import 'package:phone_form_field/src/helpers/localized_country_registry.dart';
@@ -66,16 +68,21 @@ class CountrySelector extends StatefulWidget {
   /// Set borderRadius when flag is square
   final double flagSquareBorderRadius;
 
+  final bool showDraggableIndicator;
+  final bool showSearchInput;
+  final Color? draggbleIndicatorColor;
+  final double? draggableRadius;
+
   const CountrySelector({
     Key? key,
+    this.countries,
     required this.onCountrySelected,
     this.scrollController,
     this.scrollPhysics,
+    this.favoriteCountries = const [],
     this.addFavoritesSeparator = true,
     this.showCountryCode = false,
     this.noResultMessage,
-    this.favoriteCountries = const [],
-    this.countries,
     this.searchAutofocus = kIsWeb,
     this.subtitleStyle,
     this.titleStyle,
@@ -83,8 +90,12 @@ class CountrySelector extends StatefulWidget {
     this.searchBoxTextStyle,
     this.searchBoxIconColor,
     this.flagSize = 40,
-    this.flagSquareBorderRadius = 5,
     this.isFlagSquare = false,
+    this.flagSquareBorderRadius = 5,
+    this.showDraggableIndicator = true,
+    this.showSearchInput = true,
+    this.draggbleIndicatorColor,
+    this.draggableRadius = 8,
   }) : super(key: key);
 
   @override
@@ -129,28 +140,32 @@ class CountrySelectorState extends State<CountrySelector> {
     return Column(
       children: [
         const SizedBox(height: 8),
-        Container(
-          width: 50,
-          height: 4,
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.secondary,
-            borderRadius: BorderRadius.circular(8),
+        if (widget.showDraggableIndicator)
+          Container(
+            width: 50,
+            height: 4,
+            decoration: BoxDecoration(
+              color: widget.draggbleIndicatorColor ??
+                  Theme.of(context).colorScheme.secondary,
+              borderRadius: BorderRadius.circular(widget.draggableRadius ?? 8),
+            ),
           ),
-        ),
-        SizedBox(
-          height: 70,
-          width: double.infinity,
-          child: SearchBox(
-            autofocus: widget.searchAutofocus,
-            onChanged: _onSearch,
-            onSubmitted: onSubmitted,
-            decoration: widget.searchBoxDecoration,
-            style: widget.searchBoxTextStyle,
-            searchIconColor: widget.searchBoxIconColor,
+        if (widget.showSearchInput) ...[
+          SizedBox(
+            height: 70,
+            width: double.infinity,
+            child: SearchBox(
+              autofocus: widget.searchAutofocus,
+              onChanged: _onSearch,
+              onSubmitted: onSubmitted,
+              decoration: widget.searchBoxDecoration,
+              style: widget.searchBoxTextStyle,
+              searchIconColor: widget.searchBoxIconColor,
+            ),
           ),
-        ),
-        const SizedBox(height: 16),
-        const Divider(height: 0, thickness: 1.2),
+          const SizedBox(height: 16),
+          const Divider(height: 0, thickness: 1.2),
+        ],
         Flexible(
           child: CountryList(
             favorites: _favoriteCountryFinder.filteredCountries,

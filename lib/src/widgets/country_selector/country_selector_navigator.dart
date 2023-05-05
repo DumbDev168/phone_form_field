@@ -26,6 +26,11 @@ abstract class CountrySelectorNavigator {
   /// Set borderRadius when flag is square
   final double? flagSquareBorderRadius;
 
+  final bool showDraggableIndicator;
+  final bool showSearchInput;
+  final Color? draggbleIndicatorColor;
+  final double? draggableRadius;
+
   const CountrySelectorNavigator({
     this.countries,
     this.favorites,
@@ -44,6 +49,10 @@ abstract class CountrySelectorNavigator {
     this.flagSquareBorderRadius = 8,
     this.isFlagSquare = false,
     this.useRootNavigator = true,
+    this.showDraggableIndicator = true,
+    this.showSearchInput = true,
+    this.draggbleIndicatorColor,
+    this.draggableRadius,
   });
 
   Future<Country?> navigate(BuildContext context);
@@ -70,6 +79,10 @@ abstract class CountrySelectorNavigator {
       flagSize: flagSize,
       isFlagSquare: isFlagSquare ?? false,
       flagSquareBorderRadius: flagSquareBorderRadius ?? 8,
+      showDraggableIndicator: showDraggableIndicator,
+      showSearchInput: showSearchInput,
+      draggbleIndicatorColor: draggbleIndicatorColor ?? Colors.grey,
+      draggableRadius: draggableRadius ?? 8,
     );
   }
 
@@ -163,6 +176,10 @@ abstract class CountrySelectorNavigator {
     ScrollPhysics? scrollPhysics,
     bool isFlagSquare,
     double flagSquareBorderRadius,
+    bool showDraggableIndicator,
+    bool showSearchInput,
+    Color? draggbleIndicatorColor,
+    double? draggableRadius,
   }) = DraggableModalBottomSheetNavigator._;
 }
 
@@ -416,6 +433,10 @@ class DraggableModalBottomSheetNavigator extends CountrySelectorNavigator {
     bool useRootNavigator = true,
     bool isFlagSquare = true,
     double flagSquareBorderRadius = 8,
+    bool showDraggableIndicator = true,
+    bool showSearchInput = true,
+    Color? draggbleIndicatorColor,
+    double? draggableRadius,
   }) : super(
           countries: countries,
           favorites: favorites,
@@ -433,6 +454,10 @@ class DraggableModalBottomSheetNavigator extends CountrySelectorNavigator {
           flagSize: flagSize,
           isFlagSquare: isFlagSquare,
           flagSquareBorderRadius: flagSquareBorderRadius,
+          draggableRadius: draggableRadius,
+          draggbleIndicatorColor: draggbleIndicatorColor,
+          showDraggableIndicator: showDraggableIndicator,
+          showSearchInput: showSearchInput,
         );
 
   @override
