@@ -341,7 +341,7 @@ class BottomSheetNavigator extends CountrySelectorNavigator {
     final ctrl = showBottomSheet(
       context: context,
       builder: (_) => MediaQuery(
-        data: MediaQueryData.fromWindow(WidgetsBinding.instance.window),
+        data: MediaQueryData.fromView(WidgetsBinding.instance.window),
         child: SafeArea(
           child: _getCountrySelector(
             onCountrySelected: (country) {
@@ -482,7 +482,7 @@ class DraggableModalBottomSheetNavigator extends CountrySelectorNavigator {
           builder: (context, scrollController) {
             return Container(
               decoration: ShapeDecoration(
-                color: Theme.of(context).canvasColor,
+                color: Theme.of(context).colorScheme.background,
                 shape: RoundedRectangleBorder(
                   borderRadius: effectiveBorderRadius,
                 ),

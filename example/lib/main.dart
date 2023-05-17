@@ -124,7 +124,9 @@ class MyApp extends StatelessWidget {
       title: 'Phone field demo',
       theme: ThemeData(
         brightness: Brightness.light,
-        primarySwatch: Colors.blue,
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
+            .copyWith(background: Colors.red),
       ),
       home: const PhoneFormFieldScreen(),
     );

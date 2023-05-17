@@ -164,7 +164,11 @@ class CountrySelectorState extends State<CountrySelector> {
             ),
           ),
           const SizedBox(height: 16),
-          const Divider(height: 0, thickness: 1.2),
+          Divider(
+            height: 0,
+            thickness: 1.2,
+            color: Colors.grey.shade100,
+          ),
         ],
         Flexible(
           child: CountryList(
